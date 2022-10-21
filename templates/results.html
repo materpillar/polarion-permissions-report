@@ -28,18 +28,13 @@
   <h1>XML to HTML Table</h1>
   <table>
     <tr>
-      {% for header in headers %}
-        <th>{{ header }}</th>
-      {% endfor %}
-    </tr>
-    {% for data in datas %}
+        <th>Permissions</th>{% for role in roles %}
+        <th>{{ role }}</th>{% endfor %}
+    </tr>{% for permission in permissions %}
     <tr>
-      <td>{{ data.name }}</td>
-      <td>{{ data.price }}</td>
-      <td>{{ data.description }}</td>
-      <td>{{ data.calories }}</td>
-    </tr>
-    {% endfor %}
+      <td>{{ permission }}</td>{% for role in roles %}
+      <td>{{ permission_dict[permission][role] if permission_dict[permission][role] }}</td>{% endfor %}
+    </tr>{% endfor %}
   </table>
 </body>
 </html>
